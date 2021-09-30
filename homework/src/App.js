@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from "react";
+import TextField from '@material-ui/core/TextField';
+import {Button} from "@material-ui/core";
 import './App.css';
 
 function App (){
-    const createMessage = (author, inputMessage) => ({
+    const createMessage = (author, inputMessage, key) => ({
         author,
         inputMessage,
+        key,
     })
     const [inputMessage, setInputMessage] = useState('');
 
@@ -30,7 +33,9 @@ function App (){
 
 
                         setTimeout(() => {
-                            addMessage(createMessage("Bot", inputMessage+" to you too"))
+
+                            addMessage(createMessage("Bot", inputMessage+" to you too", Date.now()+1))
+
                         }, 2000);
 
 
@@ -44,7 +49,9 @@ function App (){
         <div className = "chat">
             <div className = "chatBox">
                 <ul>{
-                    messages.map(({author, inputMessage}) => <li className='message'>
+
+                    messages.map(({author, inputMessage, key}) => <li key= {key} className='message'>
+
                         <h3>
                             {author}:
                         </h3>
@@ -53,12 +60,15 @@ function App (){
                 }
                 </ul>
             </div>
-            <form className="inputBox">
-                <input className="input" value={inputMessage} onChange={onChange} type="text" />
-                <button className="inputButton" type="button" onClick={() =>{
-                    addMessage(createMessage("User", inputMessage
+
+            <form className="inputBox" noValidate autoComplete="off">
+
+                <TextField className="input" id="filled-basic" label="Write your message here" variant="outlined" color="secondary" value={inputMessage} onChange={onChange} type="text"/>
+                <Button type="button" variant="contained" color="primary" className= "sendMsg" onClick={() =>{
+                    addMessage(createMessage("User", inputMessage, Date.now()
                     ));
-                }}>Send</button>
+                }}>Send</Button>
+
             </form>
         </div>
     )
