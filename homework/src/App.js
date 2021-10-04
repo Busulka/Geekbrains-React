@@ -70,8 +70,10 @@ function App (){
 
     ]
     return (
-        <div className = "chat">
+        <div className="allChats">
             <ChatList chatArray = {chatArray}/>
+        <div className = "chat">
+
             <MessageList  messages={messages}/>
 
             <form className="inputBox" noValidate autoComplete="off">
@@ -83,6 +85,7 @@ function App (){
                 }}>Send</Button>
 
             </form>
+        </div>
         </div>
     )
 }
