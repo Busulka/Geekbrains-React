@@ -1,7 +1,13 @@
 import React, {useEffect, useState} from "react";
+import {MessageList} from "./components/MessageList";
+
+
+
+
 import TextField from '@material-ui/core/TextField';
 import {Button} from "@material-ui/core";
 import './App.css';
+
 
 function App (){
     const createMessage = (author, inputMessage, key) => ({
@@ -47,19 +53,7 @@ function App (){
     )
     return (
         <div className = "chat">
-            <div className = "chatBox">
-                <ul>{
-
-                    messages.map(({author, inputMessage, key}) => <li key= {key} className='message'>
-
-                        <h3>
-                            {author}:
-                        </h3>
-                        <p>{inputMessage}</p>
-                    </li>)
-                }
-                </ul>
-            </div>
+            <MessageList  messages={messages}/>
 
             <form className="inputBox" noValidate autoComplete="off">
 
