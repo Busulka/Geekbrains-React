@@ -1,10 +1,17 @@
 import React, {useEffect, useState} from "react";
+import {MessageList} from "./components/MessageList";
+import {ChatList} from "./components/ChatList/ChatList";
+import TextField from '@material-ui/core/TextField';
+import {Button} from "@material-ui/core";
 import './App.css';
 
+
+
 function App (){
-    const createMessage = (author, inputMessage) => ({
+    const createMessage = (author, inputMessage, key) => ({
         author,
         inputMessage,
+        key,
     })
     const [inputMessage, setInputMessage] = useState('');
 
@@ -30,7 +37,9 @@ function App (){
 
 
                         setTimeout(() => {
-                            addMessage(createMessage("Bot", inputMessage+" to you too"))
+
+                            addMessage(createMessage("Bot", inputMessage+" to you too", Date.now()+1))
+
                         }, 2000);
 
 
@@ -40,26 +49,43 @@ function App (){
             }
         },[messages]
     )
+
+    const chatArray = [
+        {
+            chatName: 'Cuisine',
+            id: '1',
+            text:'Lorem ipsum'
+        },
+        {
+            chatName: 'Entertainment',
+            id: '2',
+            text:'Lorem ipsum'
+        },
+        {
+            chatName: 'Travel',
+            id: '3',
+            text:'Lorem ipsum'
+        },
+
+
+    ]
     return (
+        <div className="allChats">
+            <ChatList chatArray = {chatArray}/>
         <div className = "chat">
-            <div className = "chatBox">
-                <ul>{
-                    messages.map(({author, inputMessage}) => <li className='message'>
-                        <h3>
-                            {author}:
-                        </h3>
-                        <p>{inputMessage}</p>
-                    </li>)
-                }
-                </ul>
-            </div>
-            <form className="inputBox">
-                <input className="input" value={inputMessage} onChange={onChange} type="text" />
-                <button className="inputButton" type="button" onClick={() =>{
-                    addMessage(createMessage("User", inputMessage
+
+            <MessageList  messages={messages}/>
+
+            <form className="inputBox" noValidate autoComplete="off">
+
+                <TextField className="input" id="filled-basic" label="Write your message here" variant="outlined" color="secondary" autoFocus value={inputMessage} onChange={onChange} type="text"/>
+                <Button type="button" variant="contained" color="primary" className= "sendMsg" onClick={() =>{
+                    addMessage(createMessage("User", inputMessage, Date.now()
                     ));
-                }}>Send</button>
+                }}>Send</Button>
+
             </form>
+        </div>
         </div>
     )
 }
