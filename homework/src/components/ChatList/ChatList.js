@@ -4,18 +4,20 @@ import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from "@material-ui/core/Typography";
+import { Link} from "react-router-dom";
 
 
-    export const ChatList = (props) => {
+export const ChatList = (props) => {
 
 
 
         return <List >
             {props.chatArray.map((chat, i) => {
                 return (
+                    <Link to={`/chats/${chat.chatId}`}>
                     <ListItem alignItems="flex-start" key={i}>
                         <ListItemText
-                            primary={chat.id}
+                            primary={chat.chatName}
                             secondary={
                                 <React.Fragment>
                                     <Typography
@@ -23,8 +25,7 @@ import Typography from "@material-ui/core/Typography";
                                         variant="body2"
                                         color="textPrimary"
                                     >
-                                        {chat.chatName}
-                                        <br/>
+
                                         {chat.text}
                                     </Typography>
 
@@ -33,9 +34,11 @@ import Typography from "@material-ui/core/Typography";
                         />
                         <Divider variant="inset" component="li" />
                     </ListItem>
+                    </Link>
 
 
                 )
             })}
         </List>
+
     }

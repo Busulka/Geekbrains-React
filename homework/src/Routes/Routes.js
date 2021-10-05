@@ -12,7 +12,7 @@ export const Routes = () => {
             <Route exact path='/' component={Home}/>
             <Route exact path='/chats' component={Chats}/>
             <Route path='/chats/:chatId' component={Chat}/>
-            <Route path='/profile' component={Profile}/>
+            <Route exact path='/profile' component={Profile}/>
             <Route path='*' component={NotFound}/>
         </Switch>
     );
