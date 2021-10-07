@@ -14,7 +14,7 @@ export const ChatList = (props) => {
         return <List >
             {props.chatArray.map((chat, i) => {
                 return (
-                    <Link to={`/chats/${chat.chatId}`}>
+                    <Link to={`/chats/${chat.id}`}>
                     <ListItem alignItems="flex-start" key={i}>
                         <ListItemText
                             primary={chat.chatName}

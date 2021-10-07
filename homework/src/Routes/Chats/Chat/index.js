@@ -4,6 +4,7 @@ import {MessageList} from "../../../components/MessageList";
 import TextField from "@material-ui/core/TextField";
 import {Button} from "@material-ui/core";
 import {Redirect, useParams} from "react-router-dom";
+import {ChatArray} from "../../../components/ChatArray/ChatArray";
 
 
 
@@ -51,7 +52,7 @@ export const Chat = () => {
         },[messages]
     )
     const {chatId} = useParams();
-    const chat = Chats.chatArray.find(({id}) => id === chatId)
+    const chat = ChatArray.find(({id}) => id === chatId)
         if (!chat) {
             return  <Redirect to="/404"/>
         }
@@ -61,7 +62,7 @@ export const Chat = () => {
             <div className="allChats">
                 <Chats/>
                 <div className = "chat">
-
+                    <h1>{chat.chatName}</h1>
                     <MessageList  messages={messages}/>
 
                     <form className="inputBox" noValidate autoComplete="off">
