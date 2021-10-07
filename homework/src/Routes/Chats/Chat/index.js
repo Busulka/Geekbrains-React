@@ -51,11 +51,10 @@ export const Chat = () => {
         },[messages]
     )
     const {chatId} = useParams();
-    Chats.chatArray.forEach((el) => {const chat = el.chatArray.find(({id}) => id === chatId)
+    const chat = Chats.chatArray.find(({id}) => id === chatId)
         if (!chat) {
             return  <Redirect to="/404"/>
         }
-    })
 
     return (
 
