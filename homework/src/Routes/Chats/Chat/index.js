@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from "react";
-import TextField from "@material-ui/core/TextField";
-import {Button} from "@material-ui/core";
-
 import {Chats} from "../index";
 import {MessageList} from "../../../components/MessageList";
+import TextField from "@material-ui/core/TextField";
+import {Button} from "@material-ui/core";
+import {Redirect, useParams} from "react-router-dom";
+
+
+
 
 export const Chat = () => {
     const createMessage = (author, inputMessage, key) => ({
@@ -47,6 +50,12 @@ export const Chat = () => {
             }
         },[messages]
     )
+    const {chatId} = useParams();
+    Chats.chatArray.forEach((el) => {const chat = el.chatArray.find(({id}) => id === chatId)
+        if (!chat) {
+            return  <Redirect to="/404"/>
+        }
+    })
 
 
     return (
