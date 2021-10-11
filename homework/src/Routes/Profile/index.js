@@ -1,7 +1,7 @@
 import React from "react";
 import {Provider, useDispatch, useSelector} from 'react-redux';
-import {store} from "../../Redux/profile/store";
-import {TOGGLE_CHECKBOX} from "../../Redux/profile/store/toggle/actionTypes";
+import {store} from "../../Store";
+import {TOGGLE_CHECKBOX} from "../../Store/profile/toggle/actionTypes";
 
 
 
