@@ -1,6 +1,5 @@
 import React from "react";
-import {Provider, useDispatch, useSelector} from 'react-redux';
-import {store} from "../../Store";
+import { useDispatch, useSelector} from 'react-redux';
 import {TOGGLE_CHECKBOX} from "../../Store/profile/toggle/actionTypes";
 
 
@@ -35,8 +34,6 @@ const ProfileView = () => {
 
 export const Profile = (props) => {
     return(
-        <Provider store={store}>
             <ProfileView/>
-        </Provider>
     )
 }
