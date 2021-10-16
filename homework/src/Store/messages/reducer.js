@@ -6,8 +6,7 @@ const initialState = {
 }
 
 export const messagesReducer = (state = initialState, action) => {
-
-    switch (action.type){
+    switch (action?.type){
         case MESSAGES_ADD_MESSAGE:{
             return {
                 ...state,
