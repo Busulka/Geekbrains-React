@@ -1,27 +1,38 @@
-import {CHATS_ADD_CHAT, CHATS_REMOVE} from "./actions";
+import {ADD_CHAT, DELETE_CHAT, SEND_MESSAGE} from "./actions";
+import {ChatArray} from "../../components/ChatArray/ChatArray";
 
 
-const initialState = {
-    chatList: [],
-}
+const initialState = ChatArray
 
-export const chatsReducer = (state = initialState, action) => {
-    switch (action?.type) {
-        case CHATS_ADD_CHAT:{
+export const chatsReducer = (state = initialState, { type, payload }) => {
+    switch(type) {
+        case ADD_CHAT: {
             return {
-                chatList:[
-                    ...state.chatList,
-                    action.payload,
-                ]
+                ...state,
+                [payload.chatId]: {
+                    name: payload.name,
+                    id: payload.chatId,
+                    messages: [],
+                    text: null,
+                }
             }
         }
-        case CHATS_REMOVE:{
-            return{
-                chatList: state.chatList.filter(({id}) => id !== action.payload)
+
+        case DELETE_CHAT: {
+            const newState = {...state};
+            delete newState[payload.chatId];
+            return newState;
+        }
+
+        case SEND_MESSAGE: {
+            return {
+                ...state,
+                [payload.chatId]: {
+                    ...state[payload.chatId],
+                    messages: [...state[payload.chatId].messages, payload.message],
+                }
             }
         }
-        default: {
-            return state;
-        }
+        default: return state;
     }
 }

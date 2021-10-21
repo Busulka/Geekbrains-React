@@ -1,14 +1,24 @@
+export const ADD_CHAT = "CHATS::ADD_CHAT";
+export const DELETE_CHAT = "CHATS::DELETE_CHAT";
+export const SEND_MESSAGE = "CHATS::SEND_MESSAGE";
 
-export const CHATS_ADD_CHAT = 'CHATS_ADD_CHAT';
+export const addChat = (chatId, name) => ({
+    type: ADD_CHAT,
+    payload: {
+        chatId,
+        name,
+    },
+});
 
-export const CHATS_REMOVE ='CHATS_REMOVE'
-
-export const chatsAddChat = (chat) => ({
-    type: CHATS_ADD_CHAT,
-    payload: chat,
-})
-
-export const chatsRemove = (chatId) => ({
-    type: CHATS_REMOVE,
+export const deleteChat = (chatId) => ({
+    type: DELETE_CHAT,
     payload: chatId,
-})
+});
+
+export const sendMessage = (chatId, message) => ({
+    type: SEND_MESSAGE,
+    payload: {
+        chatId,
+        message,
+    }
+});
