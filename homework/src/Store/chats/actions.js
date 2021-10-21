@@ -1,3 +1,6 @@
+import {Author} from "../../components/Author";
+
+
 export const ADD_CHAT = "CHATS::ADD_CHAT";
 export const DELETE_CHAT = "CHATS::DELETE_CHAT";
 export const SEND_MESSAGE = "CHATS::SEND_MESSAGE";
@@ -22,3 +25,17 @@ export const sendMessage = (chatId, message) => ({
         message,
     }
 });
+
+export const sendBotMessage = (chatId, message) => (dispatch) => {
+    dispatch(sendMessage(chatId, message));
+    if (message.author !== Author.bot) {
+        const botMessage = {
+            author: Author.bot,
+            text: `${message.text} to you too`
+        };
+        setTimeout(() => {
+            dispatch(sendMessage(chatId, botMessage));
+        }, 1000);
+        return () => clearTimeout();
+    }
+}

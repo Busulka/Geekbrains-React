@@ -1,7 +1,9 @@
 import React from 'react';
 
-export const Message = ({ text, author }) => (
-    <div>
-        {author}: {text}
-    </div>
-);
+export const Message = ({ text, author }) => {
+    return (
+        <div>
+            {author}: {text}
+        </div>
+    );
+}

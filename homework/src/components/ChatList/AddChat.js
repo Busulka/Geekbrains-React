@@ -1,17 +1,42 @@
-import './addChat.css'
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import {addChat} from "../../Store/chats/actions";
+import { uid } from 'uid';
 
+
+import { makeStyles } from '@material-ui/core/styles';
+import {addChat} from "../../Store/chats/actions";
+import {useInput} from "../../Store/useInput";
+import {Form} from "../Form/Form";
+
+export const useStyles = makeStyles({
+    inputRoot: {
+        width: '120px',
+        background: '#9e9e9e',
+        borderRadius: '4px',
+        marginRight: '5px',
+        '& label.MuiFormLabel-root': {color: '#fafafa', fontSize: 12},
+        '& label.Mui-focused': {color: '#fafafa'},
+        '& .MuiFilledInput-underline:after': {borderColor: '#fafafa'},
+        '& .MuiInputBase-input': {color: '#fafafa'},
+        '& .MuiFilledInput-inputMarginDense': {paddingTop: '20px'}
+    },
+
+    buttonRoot: {
+        background: '#a836f4',
+        '&:hover': {background: '#e535b3'},
+        color: '#fafafa',
+        fontSize: 10,
+    }
+});
+
+
+
+export const buttonProps = 'Save';
 
 export const AddChat = () => {
     const dispatch = useDispatch();
 
-    const [value, setValue] = useState('');
-
-    const handleChange = (e) => {
-        setValue(e.target.value);
-    }
+    const { value, handleChange, reset} = useInput('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,16 +44,20 @@ export const AddChat = () => {
         if (!value) {
             return;
         }
-        const newId = `chat${Date.now()}`
+        const newId = `chat${uid()}`
 
         dispatch(addChat(newId, value));
 
-        setValue('');
+        reset();
     }
 
     return (
-        <form className="addChatForm" onSubmit={handleSubmit}>
-            <input className="addChatInput" placeholder="Add a chat name" onChange={handleChange} value={value} />
-        </form>
+        <Form
+            value={value}
+            useStyles={useStyles}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            buttonProps={buttonProps}
+        />
     )
 }
