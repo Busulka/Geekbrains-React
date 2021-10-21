@@ -13,7 +13,6 @@ export const chatsReducer = (state = initialState, { type, payload }) => {
                     name: payload.name,
                     id: payload.chatId,
                     messages: [],
-                    text: null,
                 }
             }
         }
@@ -33,6 +32,7 @@ export const chatsReducer = (state = initialState, { type, payload }) => {
                 }
             }
         }
+
         default: return state;
     }
 }
