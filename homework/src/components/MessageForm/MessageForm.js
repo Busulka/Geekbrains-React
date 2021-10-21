@@ -29,7 +29,7 @@ const useStyles = makeStyles({
 
 const inputProps = {
     id: 'filled-size-small',
-    label: 'Введите сообщение',
+    label: 'Write your message here',
     variant: 'filled',
     size: 'small',
 }
