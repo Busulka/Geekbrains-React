@@ -2,7 +2,6 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
@@ -10,12 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import { useDispatch } from 'react-redux';
 import { useCallback, useEffect } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import './films.css';
+import './movies.css';
 import {MOVIE_POSTER_URL} from "../../components/FilmsApi";
 import {getMoviesData} from "../../Store/Films/actions";
 import {selectMovies, selectMoviesError, selectMoviesLoading} from "../../Store/Films/selectors";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
         flexGrow: 1,
         maxWidth: 345,
@@ -28,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
 export const Movies = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
-
 
     const requestMovies = useCallback(() => {
         dispatch(getMoviesData());
