@@ -46,10 +46,10 @@ export const Header = () => {
                 noWrap
                 key=""
                 variant="body1"
-                to="/films"
+                to="/movies"
                 className={classes.toolbarLink}
             >
-                Films
+                Movies
             </Link>
             <Link
                 component={RouterLink}
