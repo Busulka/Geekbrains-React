@@ -5,7 +5,7 @@ import {Profile} from "./Profile";
 import {NotFound} from "./NotFound";
 import {Movies} from "./Movies";
 import {Home} from "./Home";
-import {Login} from "./Login";
+import Login from "./Login";
 import SignUp from "./SignUp";
 import {auth} from "../Firebase";
 
