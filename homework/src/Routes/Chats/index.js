@@ -1,16 +1,16 @@
-import './home.css';
+import './chats.css';
 import React from 'react';
 import { Redirect, useParams } from 'react-router-dom';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { MessageList } from '../MessageList/MessageList';
-import { MessageForm } from '../MessageForm/MessageForm';
-import { ChatList } from '../ChatList/ChatList';
+import { MessageList } from '../../components/MessageList/MessageList';
+import { MessageForm } from '../../components/MessageForm/MessageForm';
+import { ChatList } from '../../components/ChatList/ChatList';
 import {selectChats} from "../../Store/chats/selectors";
 import {sendBotMessage, sendMessage} from "../../Store/chats/actions";
 
 
-export const Home = () => {
+export const Chats = () => {
     const { chatId } = useParams();
 
     const chats = useSelector(selectChats);

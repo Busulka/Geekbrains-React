@@ -1,0 +1,18 @@
+import React from "react";
+import { Link } from 'react-router-dom';
+
+export const Home = () => {
+    return (
+        <div>
+            <h1>Home</h1>
+            <Link to="/login">
+                Go to Login Page
+            </Link>
+            <p>or</p>
+            <Link to="/signup">
+                Sign Up
+            </Link>
+        </div>
+    );
+
+};
