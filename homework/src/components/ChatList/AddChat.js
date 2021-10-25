@@ -4,7 +4,7 @@ import { uid } from 'uid';
 
 
 import { makeStyles } from '@material-ui/core/styles';
-import {addChat} from "../../Store/chats/actions";
+import {addChat, addChatToDatabase, subscribeChatsChangings} from "../../Store/chats/actions";
 import {useInput} from "../../Store/useInput";
 import {Form} from "../Form/Form";
 
@@ -33,10 +33,16 @@ export const useStyles = makeStyles({
 
 export const buttonProps = 'Save';
 
+
+
 export const AddChat = () => {
     const dispatch = useDispatch();
 
     const { value, handleChange, reset} = useInput('');
+
+    React.useEffect(() => {
+        dispatch(subscribeChatsChangings())
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -46,7 +52,7 @@ export const AddChat = () => {
         }
         const newId = `chat${uid()}`
 
-        dispatch(addChat(newId, value));
+        dispatch(addChatToDatabase(newId, value));
 
         reset();
     }

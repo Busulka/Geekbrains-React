@@ -4,6 +4,8 @@ const config ={  apiKey: "AIzaSyBkEdX0WAgw8Jo9LzBiAfthHXCIS-xmDEY",
 
     authDomain: "gb-react-fd87a.firebaseapp.com",
 
+    databaseURL: "https://gb-react-fd87a-default-rtdb.europe-west1.firebasedatabase.app",
+
     projectId: "gb-react-fd87a",
 
     storageBucket: "gb-react-fd87a.appspot.com",
