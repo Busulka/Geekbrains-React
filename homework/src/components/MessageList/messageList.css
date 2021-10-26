@@ -1,0 +1,32 @@
+.messageList-wrapper {
+    width: 500px;
+    border: 1px solid #616161;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.messageChat {
+    box-sizing: border-box;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: #616161;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.messageChat:hover{
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.messageChat::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+.messageChat::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgba(0,0,0,0.5);
+}

@@ -1,0 +1,25 @@
+
+.chatList {
+    background-color: #212255;
+    border-radius: 5px;
+    min-height: 500px;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.active-chat {
+    background: rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.addChatWrapper {
+    margin-top: auto;
+}
+
+.deleteChat {
+    align-self: end;
+    margin-left: auto;
+    cursor: pointer;
+}
